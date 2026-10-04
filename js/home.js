@@ -1,77 +1,27 @@
 (function () {
-  "use strict";
-
-  const statusRoot = document.querySelector("[data-current-status]");
-  const updatesRoot = document.querySelector("[data-latest-updates]");
-
-  function escapeHtml(value) {
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+  var e = Utils.esc;
+  var weeks = (window.PROJECT_STATUS || []).slice().sort(function (a, b) { return b.week - a.week; });
+  var box = document.getElementById("current-status");
+  if (box) {
+    var w = weeks[0];
+    box.innerHTML = w
+      ? '<div class="card"><span class="week-pill">' + e(w.week) + ". týždeň</span>" +
+        '<p class="muted" style="margin:12px 0 6px">' + e(w.date) + "</p>" +
+        "<p>" + e(w.description) + '</p><a class="btn btn--ghost btn--sm" href="status.html">Celý priebeh</a></div>' +
+        '<div class="stat-row"><div class="stat stat--done"><div class="stat-value">' + (w.completed || []).length +
+        '</div><p class="muted" style="margin:6px 0 0">Dokončené úlohy</p></div>' +
+        '<div class="stat stat--progress"><div class="stat-value">' + (w.inProgress || []).length +
+        '</div><p class="muted" style="margin:6px 0 0">Rozpracované úlohy</p></div></div>'
+      : '<p class="empty">Zatiaľ žiadne záznamy.</p>';
   }
-
-  if (statusRoot) {
-    const weeks = Array.isArray(window.projectStatusData) ? window.projectStatusData : [];
-    const latest = [...weeks].sort(function (a, b) { return Number(b.week) - Number(a.week); })[0];
-
-    if (!latest) {
-      statusRoot.innerHTML = '<div class="empty-state"><h3>Stav zatiaľ nebol pridaný</h3><p>Prvý týždeň pridajte do súboru <code>data/project-status.js</code>.</p></div>';
-    } else {
-      const completedCount = Array.isArray(latest.completed) ? latest.completed.length : 0;
-      const inProgressCount = Array.isArray(latest.inProgress) ? latest.inProgress.length : 0;
-      statusRoot.innerHTML = `
-        <div class="status-summary-main">
-          <div class="status-kicker"><span class="pulse-dot" aria-hidden="true"></span> Aktuálny prehľad</div>
-          <p class="week-label">Týždeň ${escapeHtml(latest.week)}</p>
-          <p class="status-date">${escapeHtml(latest.date)}</p>
-          <p class="status-description">${escapeHtml(latest.description)}</p>
-          <a class="text-link" href="status.html">Zobraziť celý priebeh</a>
-        </div>
-        <div class="status-metrics" aria-label="Súhrn úloh">
-          <div class="metric-card metric-complete">
-            <span class="metric-number">${completedCount}</span>
-            <span class="metric-label">hotové úlohy</span>
-          </div>
-          <div class="metric-card metric-progress">
-            <span class="metric-number">${inProgressCount}</span>
-            <span class="metric-label">rozpracované úlohy</span>
-          </div>
-        </div>`;
-    }
-  }
-
-  if (updatesRoot) {
-    const updates = Array.isArray(window.updatesData) ? window.updatesData : [];
-    const latestUpdates = [...updates]
-      .sort(function (a, b) { return String(b.sortDate).localeCompare(String(a.sortDate)); })
-      .slice(0, 5);
-
-    if (!latestUpdates.length) {
-      updatesRoot.innerHTML = '<div class="empty-state"><h3>Zatiaľ bez aktualizácií</h3><p>Novinky pridajte do súboru <code>data/updates.js</code>.</p></div>';
-    } else {
-      updatesRoot.innerHTML = latestUpdates.map(function (item) {
-        const labelByType = {
-          status: "Stav projektu",
-          minutes: "Zápisnica",
-          document: "Dokument",
-          general: "Projekt"
-        };
-        return `
-          <article class="update-item">
-            <div class="update-marker update-${escapeHtml(item.type || "general")}" aria-hidden="true"></div>
-            <div class="update-content">
-              <div class="update-meta">
-                <span>${escapeHtml(labelByType[item.type] || "Aktualizácia")}</span>
-                <time>${escapeHtml(item.date)}</time>
-              </div>
-              <h3><a href="${escapeHtml(item.link || "#")}">${escapeHtml(item.title)}</a></h3>
-              <p>${escapeHtml(item.description)}</p>
-            </div>
-          </article>`;
-      }).join("");
-    }
+  var list = document.getElementById("updates");
+  if (list) {
+    var items = (window.UPDATES || []).slice(0, 5);
+    list.innerHTML = items.length
+      ? items.map(function (u) {
+          return '<li class="update" data-type="' + e(u.type) + '"><span class="update-dot" aria-hidden="true"></span><div><div>' +
+            e(u.text) + '</div><div class="update-date"><time>' + e(u.date) + "</time></div></div></li>";
+        }).join("")
+      : '<li class="empty">Žiadne aktualizácie.</li>';
   }
 })();

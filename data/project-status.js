@@ -1,104 +1,54 @@
-/**
- * TÝŽDENNÝ STAV PROJEKTU
- *
+/*
+ * STAV PROJEKTU – týždenné záznamy
+ * ---------------------------------
  * Ako pridať nový týždeň:
- * 1. Skopírujte celý objekt medzi zloženými zátvorkami.
- * 2. Zmeňte week, date, description a zoznamy úloh.
- * 3. Nový objekt môžete vložiť na začiatok alebo koniec poľa – web si týždne zoradí.
- * 4. Nezabudnite medzi objektmi ponechať čiarku.
- *
- * Deadline je voliteľný. Ak ho úloha nemá, riadok deadline jednoducho vynechajte.
+ *   1. Skopíruj celý objekt { ... } jedného týždňa.
+ *   2. Vlož ho kamkoľvek do poľa (poradie nie je dôležité – web zoradí podľa "week").
+ *   3. Uprav hodnoty. "deadline" je nepovinný.
+ *   4. Nezabudni na čiarku medzi objektmi.
+ * Najnovší týždeň (najvyššie číslo) sa automaticky zobrazí aj na domovskej stránke.
  */
-window.projectStatusData = [
+window.PROJECT_STATUS = [
+  {
+    week: 1,
+    date: "21. 9. – 27. 9. 2026",
+    description: "Zoznámenie sa so zadaním, vytvorenie tímu a nastavenie komunikačných kanálov.",
+    completed: [
+      { title: "Úvodné stretnutie so zadávateľmi", owner: "Celý tím" },
+      { title: "Založenie GitHub repozitára", owner: "Filip Štrba" }
+    ],
+    inProgress: [],
+    planned: []
+  },
+  {
+    week: 2,
+    date: "28. 9. – 4. 10. 2026",
+    description: "Analýza zadania a prieskum existujúcich riešení na predikciu cien.",
+    completed: [
+      { title: "Analýza zadania", owner: "Natália Žilová" },
+      { title: "Prieskum existujúcich riešení", owner: "Nemanja Polić" },
+      { title: "Vytvorenie webu tímu", owner: "Natália Žilová" }
+    ],
+    inProgress: [
+      { title: "Zoznam verejných zdrojov dát", owner: "Nikita Ziborov", deadline: "8. 10. 2026" }
+    ],
+    planned: []
+  },
   {
     week: 3,
     date: "5. 10. – 11. 10. 2026",
     description: "Analýza dostupných zdrojov dát a návrh architektúry systému.",
     completed: [
-      {
-        title: "Analýza zadania",
-        owner: "Natália Žilová"
-      },
-      {
-        title: "Prieskum dostupných trhových zdrojov",
-        owner: "Nikita Ziborov"
-      }
+      { title: "Zoznam verejných zdrojov dát", owner: "Nikita Ziborov" },
+      { title: "Prehľad ML metód pre časové rady", owner: "Martin Ljavo" }
     ],
     inProgress: [
-      {
-        title: "Návrh architektúry systému",
-        owner: "Martin Ljavo",
-        deadline: "11. 10. 2026"
-      },
-      {
-        title: "Porovnanie metód zberu dát",
-        owner: "Nemanja Polić",
-        deadline: "11. 10. 2026"
-      }
+      { title: "Návrh architektúry systému", owner: "Martin Ljavo", deadline: "11. 10. 2026" },
+      { title: "Prototyp web scrapera", owner: "Filip Štrba", deadline: "14. 10. 2026" }
     ],
     planned: [
-      {
-        title: "Návrh dátovej štruktúry",
-        owner: "Nikita Ziborov",
-        deadline: "18. 10. 2026"
-      },
-      {
-        title: "Výber metrík pre predikčné modely",
-        owner: "Filip Štrba",
-        deadline: "18. 10. 2026"
-      }
-    ]
-  },
-  {
-    week: 2,
-    date: "28. 9. – 4. 10. 2026",
-    description: "Spresnenie cieľov projektu, rozdelenie kompetencií a príprava pracovného prostredia.",
-    completed: [
-      {
-        title: "Rozdelenie rolí v tíme",
-        owner: "Natália Žilová"
-      },
-      {
-        title: "Založenie projektového repozitára",
-        owner: "Martin Ljavo"
-      }
-    ],
-    inProgress: [
-      {
-        title: "Rešerš existujúcich riešení",
-        owner: "Filip Štrba",
-        deadline: "9. 10. 2026"
-      }
-    ],
-    planned: [
-      {
-        title: "Zmapovanie dátových potrieb",
-        owner: "Nemanja Polić",
-        deadline: "11. 10. 2026"
-      }
-    ]
-  },
-  {
-    week: 1,
-    date: "21. 9. – 27. 9. 2026",
-    description: "Úvodné stretnutie tímu, predstavenie zadania a dohoda na spôsobe spolupráce.",
-    completed: [
-      {
-        title: "Úvodné stretnutie so zadávateľmi",
-        owner: "Natália Žilová"
-      },
-      {
-        title: "Oboznámenie sa so zadaním",
-        owner: "Celý tím"
-      }
-    ],
-    inProgress: [],
-    planned: [
-      {
-        title: "Spresnenie rozsahu riešenia",
-        owner: "Celý tím",
-        deadline: "4. 10. 2026"
-      }
+      { title: "Návrh databázovej štruktúry", owner: "Nikita Ziborov", deadline: "18. 10. 2026" },
+      { title: "Návrh UI dashboardu", owner: "Nemanja Polić", deadline: "20. 10. 2026" }
     ]
   }
 ];

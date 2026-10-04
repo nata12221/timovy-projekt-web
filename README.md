@@ -1,85 +1,68 @@
-# Tímový projekt – webová prezentácia
+# PricePredict – web tímového projektu
 
-Statický responzívny web pre projekt **Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na predikciu cien a optimalizáciu cenotvorby produktov**.
+Statický responzívny web projektu **Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na predikciu cien a optimalizáciu cenotvorby produktov**.
 
-Web používa iba HTML, CSS a JavaScript. Nevyžaduje backend, databázu, build ani inštaláciu balíkov a je pripravený na publikovanie cez GitHub Pages.
+Web používa iba HTML, CSS a JavaScript. Nevyžaduje backend, databázu, build ani inštaláciu balíkov a je pripravený pre GitHub Pages.
 
-## Lokálne spustenie
+## Lokálne otvorenie
 
-Najjednoduchší spôsob je otvoriť súbor `index.html` priamo v prehliadači. Dátové súbory sú JavaScript objekty, preto fungujú aj bez lokálneho servera.
+Otvorte súbor `index.html` priamo v prehliadači. Keďže obsah je uložený v JavaScript dátových súboroch, web funguje aj bez lokálneho servera.
 
-Pri úpravách môžete použiť aj rozšírenie **Live Server** vo VS Code:
-
-1. otvorte celý priečinok projektu vo VS Code,
-2. kliknite pravým tlačidlom na `index.html`,
-3. vyberte **Open with Live Server**.
+Vo VS Code môžete použiť aj rozšírenie **Live Server** a pri súbore `index.html` vybrať **Open with Live Server**.
 
 ## Publikovanie cez GitHub Pages
 
-1. Nahrajte celý obsah priečinka do GitHub repozitára.
-2. V repozitári otvorte **Settings → Pages**.
-3. V časti **Build and deployment** vyberte **Deploy from a branch**.
-4. Vyberte vetvu `main` a priečinok `/ (root)`.
-5. Uložte nastavenie tlačidlom **Save**.
+1. Nahrajte celý obsah do koreňa GitHub repozitára.
+2. Otvorte **Settings → Pages**.
+3. Vyberte **Deploy from a branch**.
+4. Nastavte vetvu `main` a priečinok `/ (root)`.
+5. Uložte nastavenie.
 
-Po publikovaní bude web dostupný napríklad na `https://username.github.io/repository-name/`. Všetky cesty na webe sú relatívne, takže fungujú aj na GitHub Pages project site.
+Súbor `.nojekyll` zabezpečí priame publikovanie statických súborov. Všetky cesty sú relatívne a fungujú aj na adrese `https://username.github.io/repository-name/`.
 
 ## Kde sa upravuje obsah
-
-Bežný obsah sa upravuje v priečinku `data/` bez zásahu do HTML alebo CSS:
 
 | Súbor | Obsah |
 | --- | --- |
 | `data/project-status.js` | týždenný stav a úlohy |
 | `data/team.js` | zadávatelia a členovia tímu |
 | `data/minutes.js` | zoznam zápisníc |
-| `data/documents.js` | zoznam dokumentov a kategórie |
+| `data/documents.js` | dokumenty a kategórie filtra |
 | `data/updates.js` | aktualizácie na domovskej stránke |
 
-Každý dátový súbor obsahuje na začiatku krátky komentovaný návod a vzor položky.
+Každý dátový súbor obsahuje komentovaný návod na pridanie novej položky.
 
-## Pridanie nového týždňa
+## Nový týždeň
 
-1. Otvorte `data/project-status.js`.
-2. Skopírujte jeden existujúci objekt týždňa.
-3. Upravte `week`, `date`, `description` a zoznamy `completed`, `inProgress`, `planned`.
-4. Pri úlohe vyplňte `title`, `owner` a voliteľne `deadline`.
-5. Uložte súbor a nahrajte zmenu na GitHub.
+V `data/project-status.js` skopírujte existujúci objekt týždňa, zvýšte hodnotu `week` a upravte `date`, `description`, `completed`, `inProgress` a `planned`. Web zoradí týždne automaticky.
 
-Poradie objektov nie je dôležité. Web automaticky zobrazí najvyššie číslo týždňa ako najnovší záznam.
-
-## Pridanie zápisnice
+## Nová zápisnica
 
 1. Nahrajte PDF alebo DOCX do `documents/minutes/`.
-2. Otvorte `data/minutes.js`.
-3. Skopírujte vzorový objekt z komentára do poľa `window.minutesData`.
-4. Upravte číslo, dátum, názov, autora, popis a relatívnu cestu k súboru.
-5. Pre viac položiek oddeľte objekty čiarkou.
+2. Pridajte objekt do `data/minutes.js`.
+3. V `file` použite relatívnu cestu, napr. `documents/minutes/zapisnica-03.pdf`.
 
-Pri PDF sa zobrazia tlačidlá **Zobraziť** aj **Stiahnuť**. DOCX ponúkne stiahnutie.
+PDF možno zobraziť aj stiahnuť. DOCX je dostupný na stiahnutie.
 
-## Pridanie dokumentu
+## Nový dokument
 
 1. Nahrajte PDF alebo DOCX do `documents/documentation/`.
-2. Otvorte `data/documents.js`.
-3. Skopírujte vzorový objekt z komentára do poľa `window.documentsData`.
-4. Doplňte názov, kategóriu, popis, autora, dátumy, verziu a cestu k súboru.
+2. Pridajte objekt do `data/documents.js`.
+3. Hodnota `category` musí presne zodpovedať jednej položke v `DOCUMENT_CATEGORIES`.
 
-Kategória musí presne zodpovedať jednej hodnote v poli `window.documentCategories`, aby fungovalo filtrovanie.
+Rozbaľovací filter na stránke Dokumentácia sa naplní automaticky a pri každej kategórii zobrazí počet dokumentov.
 
 ## Úprava tímu
 
-Otvorte `data/team.js` a upravte položky v častiach `supervisors` alebo `members`. Pri členoch môžete zmeniť meno, rolu, popis a fotografiu.
-
-Fotografie nahrajte do `assets/images/` a do poľa `photo` zadajte napríklad:
+V `data/team.js` môžete zmeniť meno, rolu, popis alebo fotografiu. Fotografiu nahrajte do `assets/images/` a použite napríklad:
 
 ```js
 photo: "assets/images/natalia-zilova.jpg"
 ```
 
-Ak `photo` zostane prázdne, web automaticky použije farebný avatar s iniciálami.
+Ak zostane `photo` prázdne, web zobrazí iniciály člena.
 
-## Štruktúra projektu
+## Štruktúra
 
 ```text
 /
@@ -89,21 +72,9 @@ Ak `photo` zostane prázdne, web automaticky použije farebný avatar s iniciál
 ├── team.html
 ├── minutes.html
 ├── documentation.html
-├── css/
-│   └── styles.css
+├── css/styles.css
 ├── js/
-│   ├── main.js
-│   ├── home.js
-│   ├── status.js
-│   ├── team.js
-│   ├── minutes.js
-│   └── documentation.js
 ├── data/
-│   ├── project-status.js
-│   ├── team.js
-│   ├── minutes.js
-│   ├── documents.js
-│   └── updates.js
 ├── documents/
 │   ├── minutes/
 │   └── documentation/
@@ -112,8 +83,4 @@ Ak `photo` zostane prázdne, web automaticky použije farebný avatar s iniciál
     └── icons/
 ```
 
-## Poznámky
-
-- Názvy súborov odporúčame písať bez diakritiky a medzier, napr. `zapisnica-01.pdf`.
-- Po premenovaní alebo presunutí dokumentu vždy upravte aj jeho cestu v dátovom súbore.
-- Nepoužívajte cesty začínajúce lomkou (`/assets/...`), pretože na GitHub Pages project site by odkazovali na nesprávne miesto.
+Názvy nahrávaných súborov odporúčame písať bez diakritiky a medzier.

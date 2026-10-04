@@ -1,61 +1,74 @@
+/* Spoločná logika: navigácia, pätička, pomocné funkcie. */
 (function () {
-  "use strict";
+  var PAGES = [
+    { href: "index.html", label: "Domov", id: "home" },
+    { href: "project.html", label: "Projekt", id: "project" },
+    { href: "status.html", label: "Stav projektu", id: "status" },
+    { href: "team.html", label: "Tím", id: "team" },
+    { href: "minutes.html", label: "Zápisnice", id: "minutes" },
+    { href: "documentation.html", label: "Dokumentácia", id: "documentation" }
+  ];
+  var current = document.body.getAttribute("data-page");
 
-  const header = document.querySelector(".site-header");
-  const menuButton = document.querySelector(".menu-toggle");
-  const navigation = document.querySelector(".site-nav");
-  const navigationLinks = document.querySelectorAll(".site-nav a");
+  var header = document.getElementById("site-header");
+  if (header) {
+    header.className = "site-header";
+    header.innerHTML =
+      '<nav class="container nav" aria-label="Hlavná navigácia">' +
+      '<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">' +
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8"/></svg>' +
+      "</span><span>PricePredict</span></a>" +
+      '<button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Otvoriť menu"><span></span></button>' +
+      '<ul class="nav-list" id="nav-list">' +
+      PAGES.map(function (p) {
+        return '<li><a href="' + p.href + '"' + (p.id === current ? ' aria-current="page"' : "") + ">" + p.label + "</a></li>";
+      }).join("") +
+      "</ul></nav>";
 
-  if (menuButton && navigation) {
-    menuButton.addEventListener("click", function () {
-      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-      menuButton.setAttribute("aria-expanded", String(!isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Otvoriť hlavné menu" : "Zavrieť hlavné menu");
-      navigation.classList.toggle("is-open", !isOpen);
-      document.body.classList.toggle("menu-open", !isOpen);
+    var toggle = header.querySelector(".nav-toggle");
+    var list = header.querySelector(".nav-list");
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!open));
+      toggle.setAttribute("aria-label", open ? "Otvoriť menu" : "Zavrieť menu");
+      list.classList.toggle("is-open", !open);
     });
-
-    navigationLinks.forEach(function (link) {
-      link.addEventListener("click", function () {
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Otvoriť hlavné menu");
-        navigation.classList.remove("is-open");
-        document.body.classList.remove("menu-open");
-      });
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && navigation.classList.contains("is-open")) {
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Otvoriť hlavné menu");
-        navigation.classList.remove("is-open");
-        document.body.classList.remove("menu-open");
-        menuButton.focus();
-      }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && list.classList.contains("is-open")) { toggle.click(); toggle.focus(); }
     });
   }
 
-  const currentPage = document.body.dataset.page;
-  navigationLinks.forEach(function (link) {
-    if (link.dataset.page === currentPage) {
-      link.classList.add("is-active");
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-  });
-
-  function updateHeader() {
-    if (header) {
-      header.classList.toggle("is-scrolled", window.scrollY > 12);
-    }
-  }
-
-  updateHeader();
-  window.addEventListener("scroll", updateHeader, { passive: true });
-
-  const yearNode = document.querySelector("[data-current-year]");
-  if (yearNode) {
-    yearNode.textContent = new Date().getFullYear();
+  var footer = document.getElementById("site-footer");
+  if (footer) {
+    footer.className = "site-footer";
+    footer.innerHTML =
+      '<div class="container footer-inner"><div><strong>Tímový projekt</strong><br>' +
+      "Platforma na predikciu cien a optimalizáciu cenotvorby</div>" +
+      "<div>© " + new Date().getFullYear() + " Tím projektu · Zadávatelia: Samuel Gibala, Matúš Vaňo</div></div>";
   }
 })();
+
+/* Pomocné funkcie dostupné pre ostatné skripty */
+window.Utils = {
+  esc: function (s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  },
+  ext: function (path) {
+    var m = String(path || "").toLowerCase().match(/\.([a-z0-9]+)$/);
+    return m ? m[1] : "";
+  },
+  initials: function (name) {
+    return String(name).split(" ").map(function (p) { return p[0]; }).join("").slice(0, 2).toUpperCase();
+  },
+  /* Tlačidlá Zobraziť / Stiahnuť. PDF sa dá zobraziť, DOCX len stiahnuť. */
+  fileButtons: function (file, title) {
+    var e = Utils.esc, isPdf = Utils.ext(file) === "pdf";
+    var view = isPdf
+      ? '<a class="btn btn--primary btn--sm" href="' + e(file) + '" target="_blank" rel="noopener">Zobraziť<span class="sr-only"> – ' + e(title) + "</span></a>"
+      : '<span class="btn btn--primary btn--sm" aria-disabled="true" title="DOCX sa nedá zobraziť v prehliadači">Zobraziť</span>';
+    var dl = '<a class="btn btn--ghost btn--sm" href="' + e(file) + '" download>Stiahnuť ' + Utils.ext(file).toUpperCase() + "</a>";
+    return view + dl;
+  }
+};

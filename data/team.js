@@ -1,46 +1,19 @@
-/**
- * ČLENOVIA TÍMU
- *
- * Úprava člena: zmeňte hodnoty name, role alebo description.
- * Pridanie člena: skopírujte jeden objekt, vložte ho do poľa a upravte údaje.
- * Pole photo je voliteľné. Zadajte relatívnu cestu, napr. "assets/images/natalia.jpg".
- * Ak photo zostane prázdne, automaticky sa zobrazí farebný avatar s iniciálami.
+/*
+ * TÍM
+ * ---
+ * Úprava člena: zmeň "role" alebo "description".
+ * Fotka: nahraj obrázok do assets/images/ a doplň napr. photo: "assets/images/natalia.jpg".
+ *        Ak je photo prázdne, zobrazia sa iniciály.
  */
-window.teamData = {
-  supervisors: [
-    { name: "Samuel Gibala" },
-    { name: "Matúš Vaňo" }
-  ],
-  members: [
-    {
-      name: "Natália Žilová",
-      role: "Rola bude doplnená",
-      description: "Konkrétne zodpovednosti a oblasť pôsobenia v projekte budú doplnené.",
-      photo: ""
-    },
-    {
-      name: "Nikita Ziborov",
-      role: "Rola bude doplnená",
-      description: "Konkrétne zodpovednosti a oblasť pôsobenia v projekte budú doplnené.",
-      photo: ""
-    },
-    {
-      name: "Martin Ljavo",
-      role: "Rola bude doplnená",
-      description: "Konkrétne zodpovednosti a oblasť pôsobenia v projekte budú doplnené.",
-      photo: ""
-    },
-    {
-      name: "Nemanja Polić",
-      role: "Rola bude doplnená",
-      description: "Konkrétne zodpovednosti a oblasť pôsobenia v projekte budú doplnené.",
-      photo: ""
-    },
-    {
-      name: "Filip Štrba",
-      role: "Rola bude doplnená",
-      description: "Konkrétne zodpovednosti a oblasť pôsobenia v projekte budú doplnené.",
-      photo: ""
-    }
-  ]
-};
+window.SUPERVISORS = [
+  { name: "Samuel Gibala", role: "Zadávateľ" },
+  { name: "Matúš Vaňo", role: "Zadávateľ" }
+];
+
+window.TEAM = [
+  { name: "Natália Žilová", role: "Projektová manažérka", description: "Koordinácia tímu, komunikácia so zadávateľmi a správa dokumentácie.", photo: "" },
+  { name: "Nikita Ziborov", role: "Dátový inžinier", description: "Návrh dátovej základne, integrácia a spracovanie dát.", photo: "" },
+  { name: "Martin Ljavo", role: "ML inžinier", description: "Návrh a trénovanie predikčných modelov časových radov.", photo: "" },
+  { name: "Nemanja Polić", role: "Frontend vývojár", description: "Používateľské rozhranie a vizualizácia predikcií.", photo: "" },
+  { name: "Filip Štrba", role: "Backend vývojár", description: "Web scraping, automatizovaný zber dát a API.", photo: "" }
+];

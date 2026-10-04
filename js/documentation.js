@@ -1,81 +1,34 @@
 (function () {
-  "use strict";
+  var e = Utils.esc;
+  var docs = window.DOCUMENTS || [];
+  var cats = ["Všetky"].concat(window.DOCUMENT_CATEGORIES || []);
+  var filter = document.getElementById("category-filter");
+  var list = document.getElementById("doc-list");
+  var countNode = document.getElementById("doc-count");
+  var active = "Všetky";
 
-  const filter = document.querySelector("[data-category-filter]");
-  const root = document.querySelector("[data-documents-list]");
-  const countRoot = document.querySelector("[data-documents-count]");
-  if (!root) return;
+  function count(c) { return c === "Všetky" ? docs.length : docs.filter(function (d) { return d.category === c; }).length; }
 
-  function escapeHtml(value) {
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-  const documents = Array.isArray(window.documentsData) ? window.documentsData : [];
-  const categories = Array.isArray(window.documentCategories) ? window.documentCategories : [];
-
-  if (filter) {
-    filter.innerHTML = '<option value="all">Všetky kategórie</option>' + categories.map(function (category) {
-      return `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`;
+  function renderFilter() {
+    filter.innerHTML = cats.map(function (c) {
+      return '<option value="' + e(c) + '">' + e(c) + " (" + count(c) + ")</option>";
     }).join("");
+    filter.value = active;
   }
-
-  function render(selectedCategory) {
-    const selected = selectedCategory || "all";
-    const filtered = selected === "all"
-      ? documents
-      : documents.filter(function (documentItem) { return documentItem.category === selected; });
-
-    if (countRoot) countRoot.textContent = String(filtered.length);
-
-    if (!filtered.length) {
-      const title = documents.length ? "V tejto kategórii nie sú dokumenty" : "Zatiaľ nebol pridaný žiadny dokument";
-      const text = documents.length
-        ? "Vyberte inú kategóriu alebo zobrazte všetky dokumenty."
-        : "Po nahratí súboru do priečinka dokumentácie pridajte jeho údaje do dátového súboru.";
-      root.innerHTML = `
-        <div class="empty-state document-empty">
-          <div class="empty-icon" aria-hidden="true">□</div>
-          <h2>${title}</h2>
-          <p>${text}</p>
-        </div>`;
-      return;
-    }
-
-    root.innerHTML = filtered.map(function (item) {
-      const file = escapeHtml(item.file);
-      const isPdf = String(item.file || "").toLowerCase().endsWith(".pdf");
-      const viewButton = isPdf
-        ? `<a class="button button-secondary button-small" href="${file}" target="_blank" rel="noopener">Zobraziť <span class="sr-only">${escapeHtml(item.title)}</span></a>`
-        : "";
-      return `
-        <article class="documentation-card">
-          <div class="documentation-card-top">
-            <span class="category-tag">${escapeHtml(item.category)}</span>
-            <span class="file-type">${isPdf ? "PDF" : "DOCX"}</span>
-          </div>
-          <h2>${escapeHtml(item.title)}</h2>
-          <p>${escapeHtml(item.description)}</p>
-          <dl class="document-details">
-            <div><dt>Autor</dt><dd>${escapeHtml(item.author)}</dd></div>
-            <div><dt>Verzia</dt><dd>${escapeHtml(item.version)}</dd></div>
-            <div><dt>Pridané</dt><dd>${escapeHtml(item.dateAdded)}</dd></div>
-            <div><dt>Aktualizované</dt><dd>${escapeHtml(item.dateUpdated || item.dateAdded)}</dd></div>
-          </dl>
-          <div class="documentation-actions">
-            ${viewButton}
-            <a class="button button-primary button-small" href="${file}" download>Stiahnuť <span class="sr-only">${escapeHtml(item.title)}</span></a>
-          </div>
-        </article>`;
-    }).join("");
+  function renderList() {
+    var items = docs.filter(function (d) { return active === "Všetky" || d.category === active; });
+    countNode.textContent = items.length;
+    list.innerHTML = items.length ? items.map(function (d) {
+      return '<article class="card doc-card"><div class="doc-top"><span class="badge badge--cat">' + e(d.category) +
+        '</span><span class="badge badge--file">' + Utils.ext(d.file).toUpperCase() + " · v" + e(d.version) + "</span></div><h3>" + e(d.title) +
+        '</h3><p class="muted" style="margin:0">' + e(d.description) + '</p><dl class="doc-meta"><div><dt>Autor:</dt><dd>' + e(d.author) +
+        "</dd></div><div><dt>Pridané:</dt><dd>" + e(d.added) + "</dd></div><div><dt>Aktualizované:</dt><dd>" + e(d.updated) +
+        '</dd></div></dl><div class="doc-actions">' + Utils.fileButtons(d.file, d.title) + "</div></article>";
+    }).join("") : '<p class="empty">V tejto kategórii zatiaľ nie sú žiadne dokumenty.</p>';
   }
-
-  render("all");
-  if (filter) {
-    filter.addEventListener("change", function () { render(filter.value); });
-  }
+  filter.addEventListener("change", function () {
+    active = filter.value;
+    renderList();
+  });
+  renderFilter(); renderList();
 })();

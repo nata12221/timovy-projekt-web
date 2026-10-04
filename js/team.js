@@ -1,55 +1,16 @@
 (function () {
-  "use strict";
-
-  const supervisorsRoot = document.querySelector("[data-supervisors]");
-  const membersRoot = document.querySelector("[data-team-members]");
-  const data = window.teamData || { supervisors: [], members: [] };
-
-  function escapeHtml(value) {
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+  var e = Utils.esc;
+  function avatar(p, lg) {
+    var cls = "avatar" + (lg ? " avatar--lg" : "");
+    return p.photo
+      ? '<img class="' + cls + '" src="' + e(p.photo) + '" alt="Profilová fotografia – ' + e(p.name) + '">'
+      : '<div class="' + cls + '" role="img" aria-label="Placeholder fotografie – ' + e(p.name) + '">' + Utils.initials(p.name) + "</div>";
   }
-
-  function initials(name) {
-    return String(name).split(/\s+/).filter(Boolean).slice(0, 2).map(function (part) {
-      return part.charAt(0).toUpperCase();
-    }).join("");
-  }
-
-  if (supervisorsRoot) {
-    const supervisors = Array.isArray(data.supervisors) ? data.supervisors : [];
-    supervisorsRoot.innerHTML = supervisors.map(function (person, index) {
-      return `
-        <article class="supervisor-card">
-          <div class="supervisor-number" aria-hidden="true">0${index + 1}</div>
-          <div>
-            <p class="eyebrow">Zadávateľ projektu</p>
-            <h3>${escapeHtml(person.name)}</h3>
-          </div>
-        </article>`;
-    }).join("");
-  }
-
-  if (membersRoot) {
-    const members = Array.isArray(data.members) ? data.members : [];
-    membersRoot.innerHTML = members.map(function (person, index) {
-      const avatar = person.photo
-        ? `<img class="member-photo" src="${escapeHtml(person.photo)}" alt="Profilová fotografia – ${escapeHtml(person.name)}">`
-        : `<div class="member-photo member-photo-placeholder avatar-${index % 5}" role="img" aria-label="Zástupný profilový obrázok – ${escapeHtml(person.name)}"><span>${escapeHtml(initials(person.name))}</span></div>`;
-      return `
-        <article class="member-card">
-          ${avatar}
-          <div class="member-card-body">
-            <span class="member-index">0${index + 1}</span>
-            <h3>${escapeHtml(person.name)}</h3>
-            <p class="member-role">${escapeHtml(person.role)}</p>
-            <p>${escapeHtml(person.description)}</p>
-          </div>
-        </article>`;
-    }).join("");
-  }
+  document.getElementById("supervisors").innerHTML = (window.SUPERVISORS || []).map(function (p) {
+    return '<div class="person-chip">' + avatar(p) + "<div><strong>" + e(p.name) + '</strong><div class="muted">' + e(p.role) + "</div></div></div>";
+  }).join("");
+  document.getElementById("members").innerHTML = (window.TEAM || []).map(function (p) {
+    return '<article class="card member">' + avatar(p, true) + "<h3>" + e(p.name) + '</h3><div class="role">' + e(p.role) +
+      '</div><p class="muted">' + e(p.description) + "</p></article>";
+  }).join("");
 })();

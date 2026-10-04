@@ -1,24 +1,12 @@
-/**
- * PROJEKTOVÁ DOKUMENTÁCIA
- *
- * Postup pridania:
- * 1. Nahrajte PDF alebo DOCX do priečinka documents/documentation/.
- * 2. Skopírujte vzorový objekt nižšie do poľa window.documentsData.
- * 3. Upravte údaje. category musí byť jedna z kategórií uvedených nižšie.
- *
- * Vzor:
- * {
- *   title: "Analýza požiadaviek",
- *   category: "Analýza",
- *   description: "Východiská, ciele a funkčné požiadavky projektu.",
- *   author: "Natália Žilová",
- *   dateAdded: "05. 10. 2026",
- *   dateUpdated: "05. 10. 2026",
- *   version: "1.0",
- *   file: "documents/documentation/analyza-poziadaviek.pdf"
- * }
+/*
+ * DOKUMENTÁCIA
+ * ------------
+ * Ako pridať dokument:
+ *   1. Nahraj PDF alebo DOCX do priečinka documents/documentation/
+ *   2. Pridaj nový objekt do poľa DOCUMENTS.
+ *   3. "category" musí byť jedna z hodnôt v DOCUMENT_CATEGORIES (presne rovnaký text).
  */
-window.documentCategories = [
+window.DOCUMENT_CATEGORIES = [
   "Analýza",
   "Návrh riešenia",
   "Architektúra",
@@ -30,4 +18,25 @@ window.documentCategories = [
   "Ostatné"
 ];
 
-window.documentsData = [];
+window.DOCUMENTS = [
+  {
+    title: "Analýza zadania",
+    category: "Analýza",
+    description: "Rozbor zadania, cieľov projektu a požiadaviek zadávateľov.",
+    author: "Natália Žilová",
+    added: "01. 10. 2026",
+    updated: "03. 10. 2026",
+    version: "1.1",
+    file: "documents/documentation/analyza-zadania.pdf"
+  },
+  {
+    title: "Prehľad zdrojov trhových dát",
+    category: "Dáta",
+    description: "Zoznam verejne dostupných zdrojov cien produktov a surovín.",
+    author: "Nikita Ziborov",
+    added: "07. 10. 2026",
+    updated: "07. 10. 2026",
+    version: "1.0",
+    file: "documents/documentation/zdroje-dat.docx"
+  }
+];

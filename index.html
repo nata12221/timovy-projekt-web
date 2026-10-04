@@ -1,199 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tímový projekt zameraný na predikciu cien a optimalizáciu cenotvorby pomocou strojového učenia a trhových dát.">
-  <meta name="theme-color" content="#111a29">
-  <title>Domov | Platforma pre predikciu cien</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111a29'/%3E%3Cpath d='M12 43 25 31l9 6 18-19' fill='none' stroke='%233a8dff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='52' cy='18' r='5' fill='%23f7cce2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domov – Platforma na predikciu cien</title>
+<meta name="description" content="Tímový projekt: strojové učenie a zber trhových dát na predikciu cien.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' fill='%233d55ff' stroke='%232b2d42' stroke-width='6'/%3E%3Cpath d='M14 43 27 30l9 7 14-18' fill='none' stroke='white' stroke-width='5'/%3E%3Crect x='47' y='8' width='10' height='10' fill='%23ff5c9a' stroke='%232b2d42' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="home">
-  <a class="skip-link" href="#main-content">Preskočiť na hlavný obsah</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Tímový projekt – domov">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>Tímový projekt</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Otvoriť hlavné menu">
-        <span class="menu-toggle-lines" aria-hidden="true"></span>
-      </button>
-      <nav class="site-nav" id="main-navigation" aria-label="Hlavná navigácia">
-        <ul>
-          <li><a href="index.html" data-page="home">Domov</a></li>
-          <li><a href="project.html" data-page="project">Projekt</a></li>
-          <li><a href="status.html" data-page="status">Stav projektu</a></li>
-          <li><a href="team.html" data-page="team">Tím</a></li>
-          <li><a href="minutes.html" data-page="minutes">Zápisnice</a></li>
-          <li><a href="documentation.html" data-page="documentation">Dokumentácia</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="page-kicker">Vysokoškolský tímový projekt</p>
-          <h1 id="hero-title">Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na <span class="hero-title-accent">predikciu cien</span> a optimalizáciu cenotvorby produktov</h1>
-          <p class="hero-description">Platforma prepája automatizovaný zber trhových dát, analytiku a strojové učenie. Z historických aj aktuálnych údajov predikuje cenový vývoj a pripravuje dátovo podložené odporúčania pre cenotvorbu, nákup a riadenie zásob.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="status.html">Pozrieť stav projektu</a>
-            <a class="button button-secondary" href="project.html">Viac o projekte</a>
-          </div>
-        </div>
-
-        <div class="hero-visual-wrap" aria-hidden="true">
-          <div class="hero-visual">
-            <div class="visual-topbar">
-              <span>Price analytics</span>
-              <span class="live-indicator">Live data</span>
-            </div>
-            <div class="chart-meta">
-              <div>
-                <span>Predikovaný index</span>
-                <strong>124,8</strong>
-              </div>
-              <span class="trend-chip">+8,4 %</span>
-            </div>
-            <svg class="hero-chart" viewBox="0 0 440 190" role="presentation">
-              <defs>
-                <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3a8dff" stop-opacity="0.28"/>
-                  <stop offset="100%" stop-color="#3a8dff" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M5 158 C45 152 58 129 94 134 S153 101 187 110 S244 72 278 79 S341 40 386 48 S419 28 435 19 L435 190 L5 190 Z" fill="url(#chart-fill)"/>
-              <path class="chart-line-shadow" d="M5 158 C45 152 58 129 94 134 S153 101 187 110 S244 72 278 79 S341 40 386 48 S419 28 435 19"/>
-              <path class="chart-line" d="M5 158 C45 152 58 129 94 134 S153 101 187 110 S244 72 278 79 S341 40 386 48 S419 28 435 19"/>
-              <path class="chart-line-secondary" d="M5 140 C57 121 95 150 140 118 S222 126 267 91 S356 89 435 52"/>
-              <circle class="chart-dot" cx="94" cy="134" r="6"/>
-              <circle class="chart-dot" cx="278" cy="79" r="6"/>
-              <circle class="chart-dot-active" cx="435" cy="19" r="8"/>
-            </svg>
-            <div class="visual-metrics">
-              <div><span>Zdrojov dát</span><strong>12</strong></div>
-              <div><span>Model</span><strong>Forecast v2</strong></div>
-              <div><span>Horizont</span><strong>30 dní</strong></div>
-            </div>
-          </div>
-          <span class="floating-label label-one">Trhové dáta</span>
-          <span class="floating-label label-two">ML predikcia</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="areas-title">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Štyri piliere riešenia</p>
-            <h2 id="areas-title">Hlavné oblasti projektu</h2>
-            <p>Od získania vstupných údajov až po odporúčanie optimálnej ceny – jednotlivé časti tvoria jeden prepojený analytický proces.</p>
-          </div>
-        </div>
-
-        <div class="areas-grid">
-          <article class="area-card">
-            <div class="area-number">
-              <span>01</span>
-              <span class="area-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18V9m5 9V5m5 13v-7m5 7V3"/><path d="M2 21h20"/></svg>
-              </span>
-            </div>
-            <h3>Market Data</h3>
-            <p>Automatizovaný zber cien konkurenčných produktov, vstupných surovín a ďalších trhových údajov.</p>
-          </article>
-          <article class="area-card">
-            <div class="area-number">
-              <span>02</span>
-              <span class="area-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
-              </span>
-            </div>
-            <h3>Data Processing</h3>
-            <p>Čistenie, normalizácia, integrácia a ukladanie získaných dát do jednotnej a spoľahlivej dátovej základne.</p>
-          </article>
-          <article class="area-card">
-            <div class="area-number">
-              <span>03</span>
-              <span class="area-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 5a3 3 0 0 1 6 0v.5a3 3 0 0 1 2 5.5 3.5 3.5 0 0 1-1 6.8A3 3 0 0 1 9 18v-1a3.5 3.5 0 0 1-1-6.8A3 3 0 0 1 8 5Z"/><path d="M12 3v18m-4-9h4m4-3h-4"/></svg>
-              </span>
-            </div>
-            <h3>Machine Learning</h3>
-            <p>Analýza historických dát, identifikácia vzťahov a predikcia budúceho vývoja cien.</p>
-          </article>
-          <article class="area-card">
-            <div class="area-number">
-              <span>04</span>
-              <span class="area-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17 9 11l4 4 8-10"/><path d="M15 5h6v6"/><path d="M3 21h18"/></svg>
-              </span>
-            </div>
-            <h3>Price Optimization</h3>
-            <p>Odporúčanie optimálnej predajnej ceny podľa nákladov, trhu, konkurencie a požadovanej marže.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-dark" aria-labelledby="current-status-title">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Priebežný prehľad</p>
-            <h2 id="current-status-title">Aktuálny stav projektu</h2>
-            <p>Táto sekcia sa automaticky aktualizuje podľa najnovšieho týždňa v dátovom súbore.</p>
-          </div>
-        </div>
-        <div class="current-status-card" data-current-status aria-live="polite">
-          <div class="empty-state"><p>Načítavam aktuálny stav…</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" aria-labelledby="updates-title">
-      <div class="container updates-layout">
-        <div class="updates-intro">
-          <p class="eyebrow">Čo je nové</p>
-          <h2 id="updates-title">Posledné aktualizácie</h2>
-          <p>Najnovšie zmeny v projekte, dokumentácii a tímových výstupoch na jednom mieste.</p>
-        </div>
-        <div class="updates-list" data-latest-updates aria-live="polite">
-          <div class="empty-state"><p>Načítavam aktualizácie…</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Tímový projekt</span></a>
-          <p>Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na predikciu cien a optimalizáciu cenotvorby produktov.</p>
-        </div>
-        <nav class="footer-nav" aria-label="Navigácia v pätičke">
-          <a href="project.html">Projekt</a><a href="status.html">Stav projektu</a>
-          <a href="team.html">Tím</a><a href="minutes.html">Zápisnice</a>
-          <a href="documentation.html">Dokumentácia</a><a href="index.html">Domov</a>
-        </nav>
-      </div>
-      <div class="footer-bottom">
-        <p>© <span data-current-year></span> Tímový projekt</p>
-        <p>Statický web pripravený pre GitHub Pages</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="data/project-status.js"></script>
-  <script src="data/updates.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/home.js"></script>
+<a class="skip-link" href="#main">Preskočiť na obsah</a>
+<header id="site-header"></header>
+<main id="main">
+<section class="hero"><svg class="hero-bg" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#3b6cf0" stop-opacity=".15"/><stop offset=".7" stop-color="#3b6cf0" stop-opacity=".55"/><stop offset="1" stop-color="#ec4899" stop-opacity=".8"/></linearGradient>
+<pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#2453d6" stroke-opacity=".06"/></pattern></defs>
+<rect width="1200" height="500" fill="url(#grid)"/>
+<path class="chart-line" d="M0 400 L120 380 L220 395 L320 340 L420 355 L520 300 L620 320 L720 250 L820 270 L920 200 L1020 215 L1120 150 L1200 130" fill="none" stroke="url(#lg)" stroke-width="3"/>
+<path d="M920 200 L1020 215 L1120 150 L1200 130" fill="none" stroke="#ec4899" stroke-opacity=".5" stroke-width="2" stroke-dasharray="6 8" transform="translate(0,-30)"/>
+<g fill="#2453d6" fill-opacity=".35"><circle cx="320" cy="340" r="4"/><circle cx="520" cy="300" r="4"/><circle cx="720" cy="250" r="4"/><circle cx="920" cy="200" r="5"/></g>
+<circle cx="1120" cy="150" r="7" fill="#ec4899" fill-opacity=".7"/>
+</svg><div class="container hero-content">
+<div class="tag-row"><span class="tag tag--pink">Tímový projekt 2026</span><span class="tag">Machine Learning</span><span class="tag">Web scraping</span></div>
+<h1>Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na <span class="accent">predikciu cien a optimalizáciu cenotvorby</span> produktov</h1>
+<p class="lead">Vyvíjame inteligentnú platformu, ktorá automaticky zbiera ceny konkurencie a vstupných surovín. Pomocou strojového učenia predpovedá budúci vývoj cien. Výrobcom tak poskytne dátovo podložené odporúčania pre cenotvorbu a plánovanie nákupu.</p>
+<div class="hero-actions"><a class="btn btn--primary" href="project.html">O projekte</a><a class="btn btn--ghost" href="status.html">Stav projektu</a></div>
+</div></section>
+<section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Oblasti</span><h2>Hlavné oblasti projektu</h2></div>
+<div class="grid grid-4"><article class="card"><div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div><h3>Market Data</h3><p class="muted">Automatizovaný zber cien konkurenčných produktov, vstupných surovín a ďalších trhových údajov.</p></article><article class="card"><div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h16v4H4z"/></svg></div><h3>Data Processing</h3><p class="muted">Čistenie, normalizácia, integrácia a ukladanie získaných dát.</p></article><article class="card"><div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 6h8M7 8l4 8M17 8l-4 8"/></svg></div><h3>Machine Learning</h3><p class="muted">Analýza historických dát a predikcia budúceho vývoja cien.</p></article><article class="card"><div class="icon-box"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div><h3>Price Optimization</h3><p class="muted">Odporúčanie optimálnej predajnej ceny podľa nákladov, trhu, konkurencie a požadovanej marže.</p></article></div></div></section>
+<section class="section section--soft"><div class="container"><div class="section-head"><span class="eyebrow">Priebeh</span><h2>Aktuálny stav projektu</h2></div>
+<div class="status-summary" id="current-status"></div></div></section>
+<section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Novinky</span><h2>Posledné aktualizácie</h2></div><ul class="updates" id="updates"></ul></div></section>
+</main>
+<footer id="site-footer"></footer>
+<script src="js/main.js"></script>
+<script src="data/project-status.js"></script>
+<script src="data/updates.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>

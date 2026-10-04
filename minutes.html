@@ -1,62 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Archív zápisníc zo stretnutí projektového tímu.">
-  <meta name="theme-color" content="#111a29">
-  <title>Zápisnice | Platforma pre predikciu cien</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111a29'/%3E%3Cpath d='M12 43 25 31l9 6 18-19' fill='none' stroke='%233a8dff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='52' cy='18' r='5' fill='%23f7cce2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zápisnice – Platforma na predikciu cien</title>
+<meta name="description" content="Zápisnice zo stretnutí tímu.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' fill='%233d55ff' stroke='%232b2d42' stroke-width='6'/%3E%3Cpath d='M14 43 27 30l9 7 14-18' fill='none' stroke='white' stroke-width='5'/%3E%3Crect x='47' y='8' width='10' height='10' fill='%23ff5c9a' stroke='%232b2d42' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="minutes">
-  <a class="skip-link" href="#main-content">Preskočiť na hlavný obsah</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Tímový projekt – domov"><span class="brand-mark" aria-hidden="true"></span><span>Tímový projekt</span></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Otvoriť hlavné menu"><span class="menu-toggle-lines" aria-hidden="true"></span></button>
-      <nav class="site-nav" id="main-navigation" aria-label="Hlavná navigácia"><ul>
-        <li><a href="index.html" data-page="home">Domov</a></li><li><a href="project.html" data-page="project">Projekt</a></li><li><a href="status.html" data-page="status">Stav projektu</a></li><li><a href="team.html" data-page="team">Tím</a></li><li><a href="minutes.html" data-page="minutes">Zápisnice</a></li><li><a href="documentation.html" data-page="documentation">Dokumentácia</a></li>
-      </ul></nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <section class="page-hero page-hero-compact" aria-labelledby="page-title">
-      <div class="container page-hero-inner">
-        <p class="page-kicker">Archív stretnutí</p>
-        <h1 id="page-title">Zápisnice</h1>
-        <p>Prehľad rozhodnutí, rozdelených úloh a ďalších krokov zo stretnutí projektového tímu. PDF dokumenty možno zobraziť priamo, DOCX súbory stiahnuť.</p>
-      </div>
-    </section>
-
-    <section class="section section-soft" aria-labelledby="minutes-title">
-      <div class="container">
-        <div class="collection-toolbar">
-          <div>
-            <p class="eyebrow">Projektové stretnutia</p>
-            <h2 id="minutes-title">Zoznam zápisníc</h2>
-          </div>
-          <p class="collection-count">Počet záznamov: <strong data-minutes-count>0</strong></p>
-        </div>
-        <div class="document-list" data-minutes-list aria-live="polite">
-          <div class="empty-state"><p>Načítavam zápisnice…</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Tímový projekt</span></a><p>Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na predikciu cien a optimalizáciu cenotvorby produktov.</p></div>
-        <nav class="footer-nav" aria-label="Navigácia v pätičke"><a href="project.html">Projekt</a><a href="status.html">Stav projektu</a><a href="team.html">Tím</a><a href="minutes.html">Zápisnice</a><a href="documentation.html">Dokumentácia</a><a href="index.html">Domov</a></nav>
-      </div>
-      <div class="footer-bottom"><p>© <span data-current-year></span> Tímový projekt</p><p>Statický web pripravený pre GitHub Pages</p></div>
-    </div>
-  </footer>
-  <script src="data/minutes.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/minutes.js"></script>
+<a class="skip-link" href="#main">Preskočiť na obsah</a>
+<header id="site-header"></header>
+<main id="main">
+<section class="page-hero"><div class="container"><span class="eyebrow">Stretnutia</span><h1>Zápisnice</h1><p class="lead">Zápisnice zo stretnutí tímu. PDF je možné zobraziť v prehliadači, DOCX stiahnuť.</p></div></section><section class="section"><div class="container"><div class="grid grid-3" id="minutes-list"></div></div></section>
+</main>
+<footer id="site-footer"></footer>
+<script src="js/main.js"></script>
+<script src="data/minutes.js"></script>
+<script src="js/minutes.js"></script>
 </body>
 </html>

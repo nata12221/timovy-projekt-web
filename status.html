@@ -1,67 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Týždenný priebeh tímového projektu, hotové, rozpracované a plánované úlohy.">
-  <meta name="theme-color" content="#111a29">
-  <title>Stav projektu | Platforma pre predikciu cien</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111a29'/%3E%3Cpath d='M12 43 25 31l9 6 18-19' fill='none' stroke='%233a8dff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='52' cy='18' r='5' fill='%23f7cce2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stav projektu – Platforma na predikciu cien</title>
+<meta name="description" content="Týždenný priebeh projektu.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' fill='%233d55ff' stroke='%232b2d42' stroke-width='6'/%3E%3Cpath d='M14 43 27 30l9 7 14-18' fill='none' stroke='white' stroke-width='5'/%3E%3Crect x='47' y='8' width='10' height='10' fill='%23ff5c9a' stroke='%232b2d42' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="status-page" data-page="status">
-  <a class="skip-link" href="#main-content">Preskočiť na hlavný obsah</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Tímový projekt – domov"><span class="brand-mark" aria-hidden="true"></span><span>Tímový projekt</span></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Otvoriť hlavné menu"><span class="menu-toggle-lines" aria-hidden="true"></span></button>
-      <nav class="site-nav" id="main-navigation" aria-label="Hlavná navigácia"><ul>
-        <li><a href="index.html" data-page="home">Domov</a></li><li><a href="project.html" data-page="project">Projekt</a></li><li><a href="status.html" data-page="status">Stav projektu</a></li><li><a href="team.html" data-page="team">Tím</a></li><li><a href="minutes.html" data-page="minutes">Zápisnice</a></li><li><a href="documentation.html" data-page="documentation">Dokumentácia</a></li>
-      </ul></nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <section class="page-hero page-hero-compact" aria-labelledby="page-title">
-      <div class="container page-hero-inner">
-        <p class="page-kicker">Týždenný prehľad</p>
-        <h1 id="page-title">Stav projektu</h1>
-        <p>Priebežný záznam vykonanej práce, aktuálnych priorít a najbližších krokov. Najnovší týždeň je vždy zobrazený ako prvý.</p>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="timeline-title">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Časová os</p>
-            <h2 id="timeline-title">Priebeh po týždňoch</h2>
-            <p>Úlohy sú rozdelené podľa stavu a obsah sa automaticky načítava zo súboru <code>data/project-status.js</code>.</p>
-          </div>
-          <div class="status-legend" aria-label="Legenda stavov">
-            <span class="status-badge badge-complete">Hotové</span>
-            <span class="status-badge badge-progress">Rozpracované</span>
-            <span class="status-badge badge-planned">Naplánované</span>
-          </div>
-        </div>
-        <div class="timeline" data-status-timeline aria-live="polite">
-          <div class="empty-state"><p>Načítavam stav projektu…</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Tímový projekt</span></a><p>Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na predikciu cien a optimalizáciu cenotvorby produktov.</p></div>
-        <nav class="footer-nav" aria-label="Navigácia v pätičke"><a href="project.html">Projekt</a><a href="status.html">Stav projektu</a><a href="team.html">Tím</a><a href="minutes.html">Zápisnice</a><a href="documentation.html">Dokumentácia</a><a href="index.html">Domov</a></nav>
-      </div>
-      <div class="footer-bottom"><p>© <span data-current-year></span> Tímový projekt</p><p>Statický web pripravený pre GitHub Pages</p></div>
-    </div>
-  </footer>
-  <script src="data/project-status.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/status.js"></script>
+<body data-page="status">
+<a class="skip-link" href="#main">Preskočiť na obsah</a>
+<header id="site-header"></header>
+<main id="main">
+<section class="page-hero"><div class="container"><span class="eyebrow">Priebeh</span><h1>Stav projektu</h1><p class="lead">Priebeh projektu po jednotlivých týždňoch – od najnovšieho po najstarší.</p></div></section><section class="section"><div class="container"><ol class="timeline" id="timeline"></ol></div></section>
+</main>
+<footer id="site-footer"></footer>
+<script src="js/main.js"></script>
+<script src="data/project-status.js"></script>
+<script src="js/status.js"></script>
 </body>
 </html>
