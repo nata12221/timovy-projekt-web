@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zadávatelia a členovia tímu vysokoškolského projektu.">
+  <meta name="theme-color" content="#111a29">
+  <title>Tím | Platforma pre predikciu cien</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111a29'/%3E%3Cpath d='M12 43 25 31l9 6 18-19' fill='none' stroke='%233a8dff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='52' cy='18' r='5' fill='%23f7cce2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="team">
+  <a class="skip-link" href="#main-content">Preskočiť na hlavný obsah</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Tímový projekt – domov"><span class="brand-mark" aria-hidden="true"></span><span>Tímový projekt</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Otvoriť hlavné menu"><span class="menu-toggle-lines" aria-hidden="true"></span></button>
+      <nav class="site-nav" id="main-navigation" aria-label="Hlavná navigácia"><ul>
+        <li><a href="index.html" data-page="home">Domov</a></li><li><a href="project.html" data-page="project">Projekt</a></li><li><a href="status.html" data-page="status">Stav projektu</a></li><li><a href="team.html" data-page="team">Tím</a></li><li><a href="minutes.html" data-page="minutes">Zápisnice</a></li><li><a href="documentation.html" data-page="documentation">Dokumentácia</a></li>
+      </ul></nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero page-hero-compact" aria-labelledby="page-title">
+      <div class="container page-hero-inner">
+        <p class="page-kicker">Ľudia za projektom</p>
+        <h1 id="page-title">Tím</h1>
+        <p>Projekt vzniká v spolupráci zadávateľov a päťčlenného študentského tímu, ktorý prepája analytické, dátové a technické kompetencie.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="supervisors-title">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">Vedenie projektu</p><h2 id="supervisors-title">Zadávatelia</h2><p>Odborné vedenie, smerovanie a spätnú väzbu projektu zabezpečujú zadávatelia.</p></div>
+        </div>
+        <div class="supervisors-grid" data-supervisors aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-labelledby="members-title">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">Projektový tím</p><h2 id="members-title">Členovia tímu</h2><p>Údaje, roly a fotografie sa upravujú na jednom mieste v súbore <code>data/team.js</code>.</p></div>
+        </div>
+        <div class="team-grid" data-team-members aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Tímový projekt</span></a><p>Platforma využívajúca strojové učenie a automatizovaný zber trhových dát na predikciu cien a optimalizáciu cenotvorby produktov.</p></div>
+        <nav class="footer-nav" aria-label="Navigácia v pätičke"><a href="project.html">Projekt</a><a href="status.html">Stav projektu</a><a href="team.html">Tím</a><a href="minutes.html">Zápisnice</a><a href="documentation.html">Dokumentácia</a><a href="index.html">Domov</a></nav>
+      </div>
+      <div class="footer-bottom"><p>© <span data-current-year></span> Tímový projekt</p><p>Statický web pripravený pre GitHub Pages</p></div>
+    </div>
+  </footer>
+  <script src="data/team.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/team.js"></script>
+</body>
+</html>
