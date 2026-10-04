@@ -11,9 +11,9 @@ window.SUPERVISORS = [
 ];
 
 window.TEAM = [
-  { name: "Natália Žilová", role: "Projektová manažérka", description: "Koordinácia tímu, komunikácia so zadávateľmi a správa dokumentácie.", photo: "" },
-  { name: "Nikita Ziborov", role: "Dátový inžinier", description: "Návrh dátovej základne, integrácia a spracovanie dát.", photo: "" },
-  { name: "Martin Ljavo", role: "ML inžinier", description: "Návrh a trénovanie predikčných modelov časových radov.", photo: "" },
-  { name: "Nemanja Polić", role: "Frontend vývojár", description: "Používateľské rozhranie a vizualizácia predikcií.", photo: "" },
-  { name: "Filip Štrba", role: "Backend vývojár", description: "Web scraping, automatizovaný zber dát a API.", photo: "" }
+  { name: "Natália Žilová", role: "Rola sa doplní", description: "Popis sa doplní.", photo: "" },
+  { name: "Nikita Ziborov", role: "Rola sa doplní", description: "Popis sa doplní.", photo: "" },
+  { name: "Martin Ljavo", role: "Rola sa doplní", description: "Popis sa doplní.", photo: "" },
+  { name: "Nemanja Polić", role: "Rola sa doplní", description: "Popis sa doplní.", photo: "" },
+  { name: "Filip Štrba", role: "Rola sa doplní", description: "Popis sa doplní.", photo: "" }
 ];

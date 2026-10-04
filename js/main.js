@@ -15,9 +15,9 @@
     header.className = "site-header";
     header.innerHTML =
       '<nav class="container nav" aria-label="Hlavná navigácia">' +
-      '<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">' +
+      '<a class="brand" href="index.html" aria-label="Domov"><span class="brand-mark" aria-hidden="true">' +
       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8"/></svg>' +
-      "</span><span>PricePredict</span></a>" +
+      "</span></a>" +
       '<button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Otvoriť menu"><span></span></button>' +
       '<ul class="nav-list" id="nav-list">' +
       PAGES.map(function (p) {
