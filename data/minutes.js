@@ -14,7 +14,7 @@ window.MINUTES = [
     date: "8. 10. 2026",
     author: "Natália Žilová",
     description: "Návrh zberu a kategorizácie dát pomocou scrapera a LLM, technické prostredie projektu, zdroje dát a požiadavky na webový výstup.",
-    file: "documents/minutes/zapisnica-01-2026-10-08.pdf"
+    file: "documents/minutes/zapisnica-01-2026-10-08-natalia.pdf"
   },
   {
     number: 2,
