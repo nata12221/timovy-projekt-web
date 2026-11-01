@@ -14,7 +14,7 @@ window.MINUTES = [
     date: "8. 10. 2026",
     author: "Natália Žilová",
     description: "Návrh zberu a kategorizácie dát pomocou scrapera a LLM, technické prostredie projektu, zdroje dát a požiadavky na webový výstup.",
-    file: "documents/minutes/zapisnica-01-2026-10-08.docx"
+    file: "documents/minutes/zapisnica-01-2026-10-08.pdf"
   },
   {
     number: 2,
@@ -28,7 +28,7 @@ window.MINUTES = [
     number: 3,
     title: "Prezentácia aktuálneho stavu projektu",
     date: "22. 10. 2026",
-    author: "Neuvedený",
+    author: "Natália Žilová",
     description: "Prezentácia rozpracovaného riešenia zadávateľom, zhodnotenie aktuálneho stavu a dohoda pokračovať v dlhodobých úlohách projektu.",
     file: "documents/minutes/zapisnica-03-2026-10-22.pdf"
   },
